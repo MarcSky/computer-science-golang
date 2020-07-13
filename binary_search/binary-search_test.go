@@ -6,6 +6,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var a []int
+
+func init() {
+	for i := 0; i < 1000000; i++ {
+		a = append(a, i)
+	}
+}
+
 type binarySearchData struct {
 	value    []int
 	item     int
@@ -17,9 +25,8 @@ func TestBinarySearch(t *testing.T) {
 	t.Parallel()
 
 	params := []binarySearchData{
-		{[]int{1, 5, 7, 8, 9, 11, 14, 17, 20}, 17, 7, nil},
-		{[]int{1, 5, 7, 8, 9, 11, 14, 17, 20}, 22, 0, notFound},
-
+		{a, 17, 17, nil},
+		{a, 1000001, 0, notFound},
 	}
 
 	for _, p := range params {
@@ -27,5 +34,26 @@ func TestBinarySearch(t *testing.T) {
 		assert.Equal(t, p.expected, res)
 		assert.Equal(t, p.err, err)
 	}
+}
 
+func BenchmarkBinarySearch(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_, _ = BinarySearch(a, 1000000)
+	}
+}
+
+func stupidSearch(a []int, item int) int {
+	for i := 0; i < len(a); i++ {
+		if a[i] == item {
+			return i
+		}
+	}
+
+	return -1
+}
+
+func BenchmarkStupidSearch(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_ = stupidSearch(a, 1000000)
+	}
 }
