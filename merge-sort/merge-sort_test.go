@@ -41,4 +41,10 @@ func TestMergeSort(t *testing.T) {
 		res := MergeSort(p.value)
 		assert.Equal(t, p.expected, res)
 	}
+
+	for _, p := range params {
+		res := MergeSortMulti(p.value)
+		assert.Equal(t, p.expected, res)
+	}
+
 }

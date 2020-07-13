@@ -1,6 +1,8 @@
 package merge_sort
 
-import "sync"
+import (
+	"sync"
+)
 
 func MergeSort(s []int) []int {
 	if len(s) <= 1 {
