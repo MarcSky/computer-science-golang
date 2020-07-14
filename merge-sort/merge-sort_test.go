@@ -9,10 +9,11 @@ import (
 var a []int
 
 func init() {
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < 100000; i++ {
 		a = append(a, i)
 	}
 }
+
 func BenchmarkMergeSort(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		MergeSort(a)
