@@ -14,7 +14,10 @@ BenchmarkBinarySearch-4   	28309273	        40.6 ns/op
 
 Comparing sort algorithms
 ```
-BenchmarkMergeSort 1m items O(log n)
+BenchmarkQuickSort 1m items O(n *log n)
+BenchmarkQuickSort-4   	     698	   1716028 ns/op
+
+BenchmarkMergeSort 1m items O(n *log n)
 BenchmarkMergeSort-4   	      12	  96197076 ns/op
 
 BenchmarkSelectionSort 100k items O(n^2)
