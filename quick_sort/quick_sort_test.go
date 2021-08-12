@@ -1,7 +1,6 @@
 package quick_sort
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -36,7 +35,6 @@ func TestQuickSort(t *testing.T) {
 
 	for _, p := range params {
 		res := QuickSort(p.value, 0, len(p.value)-1)
-		fmt.Println(res)
 		assert.Equal(t, p.expected, res)
 	}
 }

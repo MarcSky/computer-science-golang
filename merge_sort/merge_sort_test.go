@@ -26,13 +26,13 @@ func BenchmarkMergeMultiSort(b *testing.B) {
 	}
 }
 
-type mergeSortData struct {
-	value    []int
-	expected []int
-}
-
 func TestMergeSort(t *testing.T) {
 	t.Parallel()
+
+	type mergeSortData struct {
+		value    []int
+		expected []int
+	}
 
 	params := []mergeSortData{
 		{[]int{5, 2, 3, 1, 6, 8, 9, 5, 4, 3, 3}, []int{1, 2, 3, 3, 3, 4, 5, 5, 6, 8, 9}},
